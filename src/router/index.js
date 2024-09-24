@@ -9,17 +9,17 @@ import profilePage from '../pages/profilePage';
 const routes = [
     {
         name : 'Halaman Utama',
-        path : '/',
+        path : '/main',
         component : mainPage
     },
     {
         name : 'Home',
-        path : '/',
+        path : '/home',
         component : homePage
     },
     {
         name : 'Profile',
-        path : '/',
+        path : '/profile',
         component : profilePage
     },
 ];

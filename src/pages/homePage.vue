@@ -1,7 +1,6 @@
 <template>
     <div>
-      <h1>Welcome to Home Page</h1>
-      <p>This is the content of the home page.</p>
+   Welcome to Home Page
     </div>
   </template>
   
@@ -12,7 +11,5 @@
   </script>
   
   <style scoped>
-  h1 {
-    color: blue;
-  }
+
   </style>
