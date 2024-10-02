@@ -1,52 +1,12 @@
 <template>
   <div class="w-screen h-screen flex">
     <!-- Side bar -->
-    <div class="w-[300px] h-full bg-gray-200 flex flex-col">
-      <!-- Admin Dashboard Header -->
-      <div class="h-[50px] bg-gray-900 text-black flex justify-start items-center">
-        <div class="px-[20px]">
-          <h3 class="font-bold rounded text-white">Admin </h3>
-        </div>
-      </div>
-
-      <!-- Main Menu -->
-      <div class="bg-gray-800 text-white px-[10px] flex-grow flex flex-col justify-between">
-        <div class="flex flex-col">
-          <!-- Home Button -->
-          <router-link
-            to="/home"
-            class="my-2 flex items-center space-x-2 text-white hover:bg-white hover:text-black py-2 px-3 rounded-md transition-colors duration-300"
-          >
-            <font-awesome-icon :icon="['fas', 'home']" class="fa-xs ml-1" />
-            <span> Home </span>
-          </router-link>
-
-          <!-- Profile Button -->
-          <router-link
-            to="/profile"
-            class="my-2 flex items-center space-x-2 text-white hover:bg-white hover:text-black py-2 px-3 rounded-md transition-colors duration-300"
-          >
-            <font-awesome-icon :icon="['fas', 'user']" class="fa-xs ml-1" />
-            <span> Profile </span>
-          </router-link>
-        </div>
-
-        <!-- Settings Button at the Bottom -->
-        <div class="bg-gray-800 text-white px-[10px] pb-4">
-          <router-link
-            to="/settings"
-            class="flex items-center space-x-2 text-white hover:bg-white hover:text-black py-3 px-4 rounded-md transition-colors duration-300"
-          >
-            <font-awesome-icon :icon="['fas', 'cog']" class="fa-xs ml-1" />
-            <span> Settings </span>
-          </router-link>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Content -->
+    <navPage />
+    <!-- Header Bar -->
     <div class="w-full h-full bg-white-500">
-      <div class="h-[50px] bg-gray-100 flex items-center shadow-sm px-[15px] w-full py-[10px] z-10 border-b">
+      <div
+        class="h-[50px] bg-gray-100 flex items-center justify-between shadow-sm px-[15px] w-full py-[10px] z-10 border-b"
+      >
         <div class="flex items-center">
           <div class="ml-2">
             <font-awesome-icon :icon="['fas', 'bars']" class="text-black" />
@@ -58,9 +18,21 @@
             class="ml-4 border rounded-md px-2 py-1 focus:outline-none focus:ring focus:ring-black-500"
           />
         </div>
+        <!--Profile Section-->
+        <div class="flex items-center space x-4">
+          <!-- Profile Icon -->
+          <div class="me-2 w-8 h-8 rounded-full bg-gray-300 flex items items-center justify-center">
+            <font-awesome-icon :icon="['fas', 'user']" class="text-black"/>
+          </div>
+          <!--Name and Status-->
+          <div class="text-left">
+            <div class="text-sm font-bold">Genesy Matthew</div>
+            <div class="text-xs text-gray-500">Admin</div>
+          </div>
+        </div>
       </div>
       <div class="h-[calc(100vh-50px)] bg-white">
-        Main
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -68,17 +40,24 @@
 
 <script>
 // Import FontAwesomeIcon component and the icons from the library
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core'; // Import library
-import { faHome, faUser, faCog, faBars } from '@fortawesome/free-solid-svg-icons' // Import icons
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core"; // Import library
+import {
+  faHome,
+  faUser,
+  faCog,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons"; // Import icons
+import navPage from "@/pages/navPage.vue";
 
 // Add icons to the library
 library.add(faHome, faUser, faCog, faBars);
 
 export default {
   components: {
-    FontAwesomeIcon
-  }
+    FontAwesomeIcon,
+    navPage,
+  },
 };
 </script>
 

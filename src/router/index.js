@@ -1,27 +1,70 @@
 import { createRouter, createWebHistory } from "vue-router";
+import cookie from "@/plugin/cookie";
 
-import mainPage from '../pages/master/mainPage';
-
-import homePage from '../pages/homePage';
-
-import profilePage from '../pages/profilePage';
+import profilePage from "@/components/profile/profilePage.vue";
+import HomePage from "@/pages/homePage.vue";
+import SettingPage from "@/components/setting/settingPage.vue";
+import LoginPage from "@/pages/loginPage.vue";
+import MainPage from "@/pages/master/mainPage.vue";
 
 const routes = [
-    {
-        name : 'Halaman Utama',
-        path : '/main',
-        component : mainPage
+  {
+    name: "index",
+    path: "/",
+    component: MainPage,
+    beforeEnter: async (to, from, next) => {
+      let userData = await cookie.getUserid();
+      if (userData != null) {
+        next({ name: "home" });
+      } else {
+        next({ name: "login" });
+      }
     },
-    {
-        name : 'Home',
-        path : '/home',
-        component : homePage
+  },
+  {
+    name: "home",
+    path: "/home",
+    component: HomePage,
+    beforeEnter: async (to, from, next) => {
+      let userData = await cookie.getUserid();
+      if (userData != null) {
+        next();
+      } else {
+        next({ name: "index" });
+      }
     },
-    {
-        name : 'Profile',
-        path : '/profile',
-        component : profilePage
+  },
+  {
+    name: "Profile",
+    path: "/profile",
+    component: profilePage,
+    beforeEnter: async (to, from, next) => {
+      let userData = await cookie.getUserid();
+      if (userData != null) {
+        next();
+      } else {
+        next({ name: "index" });
+      }
     },
+  },
+  {
+    name: "Setting",
+    path: "/settings",
+    component: SettingPage,
+  },
+  {
+    name: "login",
+    path: "/login",
+    component: LoginPage,
+    beforeEnter: async (to, from, next) => {
+      let userData = await cookie.getUserid();
+      if (userData != null) {
+        next({ name: "home" });
+      } else {
+        next();
+      }
+    },
+  },
 ];
 const router = Router();
 export default router;
