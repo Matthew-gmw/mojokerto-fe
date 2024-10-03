@@ -3,7 +3,6 @@ import cookie from "@/plugin/cookie";
 
 import profilePage from "@/components/profile/profilePage.vue";
 import HomePage from "@/pages/homePage.vue";
-import SettingPage from "@/components/setting/settingPage.vue";
 import LoginPage from "@/pages/loginPage.vue";
 import MainPage from "@/pages/master/mainPage.vue";
 
@@ -46,11 +45,6 @@ const routes = [
         next({ name: "index" });
       }
     },
-  },
-  {
-    name: "Setting",
-    path: "/settings",
-    component: SettingPage,
   },
   {
     name: "login",
