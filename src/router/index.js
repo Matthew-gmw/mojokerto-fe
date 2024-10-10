@@ -5,6 +5,8 @@ import profilePage from "@/components/profile/profilePage.vue";
 import HomePage from "@/pages/homePage.vue";
 import LoginPage from "@/pages/loginPage.vue";
 import MainPage from "@/pages/master/mainPage.vue";
+import SoalPage from "@/components/soal/soalPage.vue";
+import rulesPage from "@/components/soal/rulesPage.vue";
 
 const routes = [
   {
@@ -56,6 +58,32 @@ const routes = [
         next({ name: "home" });
       } else {
         next();
+      }
+    },
+  },
+  {
+    name: "soal",
+    path: "/soal",
+    component: SoalPage,
+    beforeEnter: async (to, from, next) => {
+      let userData = await cookie.getUserid();
+      if (userData != null) {
+        next();
+      } else {
+        next({ name: "index" });
+      }
+    },
+  },
+  {
+    name: "peraturan",
+    path: "/rules",
+    component: rulesPage,
+    beforeEnter: async (to, from, next) => {
+      let userData = await cookie.getUserid();
+      if (userData != null) {
+        next();
+      } else {
+        next({ name: "index" });
       }
     },
   },
