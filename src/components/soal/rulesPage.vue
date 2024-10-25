@@ -1,5 +1,5 @@
 <template>
-    <div class="style=overflow:hidden auto rules-page flex flex-col justify-end bg-gradient-to-r from-blue-100 to-blue-100 h-screen p-20 px-20">
+    <div class="style=overflow:hidden auto rules-page flex flex-col justify-end bg-gray-to-blue-100 h-screen p-20 px-20">
       <!-- Ketentuan -->
       <div class="bg-white shadow-md p-8 rounded-lg max-w-3xl mx-auto p-20 py-6">
         <h1 class="text-4xl font-bold text-blue-900 mb-6 text-center">Peraturan Sebelum Memulai</h1>
@@ -32,7 +32,7 @@
           <h2 class="text-xl font-semibold mb-4">Apakah Anda sudah siap?</h2>
           <div class="flex justify-between mt-4">
             <button @click="closeModal" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition duration-300">Batal</button>
-            <router-link to="/soal">
+            <router-link to="/timer">
               <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Mulai</button>
             </router-link>
           </div>

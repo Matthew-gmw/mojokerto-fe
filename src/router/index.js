@@ -7,7 +7,7 @@ import LoginPage from "@/pages/loginPage.vue";
 import MainPage from "@/pages/master/mainPage.vue";
 import SoalPage from "@/components/soal/soalPage.vue";
 import rulesPage from "@/components/soal/rulesPage.vue";
-
+import TimerPage from '@/components/soal/timerPage.vue';
 const routes = [
   {
     name: "index",
@@ -87,6 +87,7 @@ const routes = [
       }
     },
   },
+  { path: '/timer', component: TimerPage },
 ];
 const router = Router();
 export default router;
