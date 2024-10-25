@@ -1,7 +1,7 @@
 <template>
-    <div class="rules-page flex flex-col justify-between h-screen bg-gradient-to-r from-blue-100 to-blue-200 p-8">
+    <div class="style=overflow:hidden auto rules-page flex flex-col justify-end bg-gradient-to-r from-blue-100 to-blue-100 h-screen p-20 px-20">
       <!-- Ketentuan -->
-      <div class="bg-white shadow-md p-8 rounded-lg max-w-3xl mx-auto">
+      <div class="bg-white shadow-md p-8 rounded-lg max-w-3xl mx-auto p-20 py-6">
         <h1 class="text-4xl font-bold text-blue-900 mb-6 text-center">Peraturan Sebelum Memulai</h1>
         <ul class="list-none space-y-4">
           <li class="flex items-center">
@@ -20,7 +20,7 @@
       </div>
   
       <!-- Button Mulai -->
-      <div class="flex justify-end mt-8">
+      <div class="flex justify-end">
         <button @click="openModal" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition duration-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-green-300">
           Mulai
         </button>
@@ -80,7 +80,6 @@
     color: #333;
   }
   
-  /* Modal styling */
   .fixed {
     position: fixed;
   }
@@ -95,11 +94,7 @@
   .z-50 {
     z-index: 50;
   }
-  
-  .bg-opacity-50 {
-    background-opacity: 0.5;
-  }
-  
+   
   
   .text-center {
     text-align: center;

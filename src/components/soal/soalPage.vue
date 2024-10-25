@@ -1,77 +1,59 @@
 <template>
-    <div class="soal-page flex flex-col items-center justify-center h-screen">
-      <!-- Timer -->
-      <div class="mb-4 text-2xl font-bold text-red-600">
-        Waktu tersisa: {{ formattedTimeRemaining }}
-      </div>
-  
-      <!-- Image in the center -->
-      <div @click="handleImageClick" class="cursor-pointer">
-        <img src="https://via.placeholder.com/400" alt="Clickable Image" class="w-[400px] h-[400px] object-contain" />
-      </div>
-  
-      <!-- Message after time runs out -->
-      <div v-if="timeOver" class="mt-4 text-xl text-red-500 font-semibold">
-        Waktu telah habis!
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-[300px] bg-gray-200 h-screen">
+      <!-- Isi Sidebar -->
+      <div class="p-4">
+        <h3 class="font-bold text-xl mb-4">Menu</h3>
+        <!-- Tambahkan item-menu lain di sini -->
+        <router-link to="/home" class="block my-2">Home</router-link>
+        <router-link to="/profile" class="block my-2">Profile</router-link>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        timeRemaining: 30 * 1000, // Time in milliseconds (30 seconds)
-        timerInterval: null,      // Store the interval ID
-        timeOver: false,          // To track if the time is over
-      };
-    },
-    computed: {
-      // Format time to display seconds and milliseconds
-      formattedTimeRemaining() {
-        const seconds = Math.floor(this.timeRemaining / 1000);
-        const milliseconds = this.timeRemaining % 1000;
-        return `${seconds}.${milliseconds.toString().padStart(3, '0')} detik`; // Format: "30.000 detik"
-      },
-    },
-    methods: {
-      // Method to handle click event on image
-      handleImageClick() {
-        if (!this.timeOver) {
-          clearInterval(this.timerInterval); // Stop the timer when the image is clicked
-          alert("Gambar diklik! Timer berhenti.");
-        } else {
-          alert("Waktu sudah habis!");
-        }
-      },
-      // Countdown Timer Logic with milliseconds
-      startTimer() {
-        this.timerInterval = setInterval(() => {
-          if (this.timeRemaining > 0) {
-            this.timeRemaining -= 10; // Decrease time by 10 milliseconds
-          } else {
-            this.timeOver = true;
-            clearInterval(this.timerInterval); // Stop the timer when time is up
-          }
-        }, 10); // Update every 10 milliseconds
-      },
-    },
-    mounted() {
-      this.startTimer(); // Start the timer when the component is mounted
-    },
-    beforeUnmount() {
-      // Clear the interval if the component is destroyed
-      clearInterval(this.timerInterval);
-    },
-  };
-  </script>
-  
-  <style scoped>
-  .soal-page {
-    background-color: #f9f9f9;
-  }
-  .cursor-pointer {
-    cursor: pointer;
-  }
-  </style>
-  
+
+    <!-- Main Content -->
+    <div class="flex flex-col w-full h-screen">
+      <!-- Navbar -->
+      <div class="h-[60px] bg-gray-900 text-white flex items-center justify-between px-4">
+        <div>
+          <h1 class="text-xl font-bold">Soal Page</h1>
+        </div>
+        <div>
+          <router-link to="/settings" class="hover:text-gray-300">Settings</router-link>
+        </div>
+      </div>
+
+      <!-- Soal Section -->
+      <div class="flex flex-col bg-red-600 justify-center items-center w-full h-full">
+        <!-- Bagian gambar soal -->
+        <div class="flex flex-row justify-center items-center w-full h-[70%] bg-red-400 gap-3">
+          <div v-for="gambar in dataGambar" :key="gambar.id">
+            <div v-if="gambar.id === pilihan1 || gambar.id === pilihan2 || gambar.id === pilihan3 || gambar.id === pilihan4"
+              class="flex flex-row justify-center items-center w-[200px] h-[250px] bg-white rounded">
+              {{ gambar.id }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Bagian bawah (jika diperlukan) -->
+        <div class="flex justify-center items-center w-full h-[30%] bg-gray-500">
+          <!-- Konten tambahan -->
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { dataGambar } from '@/lib/dataGambar';
+
+// Menentukan gambar pilihan yang muncul
+const pilihan1 = '1';
+const pilihan2 = '2';
+const pilihan3 = '3';
+const pilihan4 = '4';
+</script>
+
+<style scoped>
+/* CSS tambahan jika diperlukan */
+</style>
